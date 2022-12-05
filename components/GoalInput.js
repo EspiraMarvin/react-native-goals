@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flexDirection: "column", // default flex direction in react native
     justifyContent: "center",
     alignItems: "center",
-    padding: 18,
+    padding: 16,
     backgroundColor: "#311b6b",
   },
   textInput: {

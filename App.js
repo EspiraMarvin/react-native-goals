@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar"
 import { useState } from "react"
-import { StyleSheet, View, FlatList, Button } from "react-native"
+import { StyleSheet, Text, View, FlatList, Button } from "react-native"
 import GoalInput from "./components/GoalInput"
 import GoalItem from "./components/GoalItem"
 
@@ -26,6 +26,7 @@ export default function App() {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals.filter((goal) => goal.id !== id),
     ])
+
     // function below works the same way as above
     /*
     setCourseGoals((currentCourseGoals) => {
@@ -49,8 +50,12 @@ export default function App() {
           AddGoalHandler={AddGoalHandler}
         />
         <View style={styles.goalsContainer}>
+          {courseGoals.length == 0 && (
+            <Text style={styles.noGoals}>No Goals Yet</Text>
+          )}
           <FlatList
             data={courseGoals}
+            alwaysBounceVertical={false}
             renderItem={(itemData) => {
               return (
                 <GoalItem
@@ -77,5 +82,12 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
     marginTop: 10,
+  },
+  noGoals: {
+    flex: 1,
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "gray",
+    fontSize: 20,
   },
 })
